@@ -10,10 +10,10 @@ resource "aws_s3_bucket" "sample_bucket" {
 }
 
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
+  ami           = "ami-0f2e14a2494a72db9"
   instance_type = "t3.micro"
 
   tags = {
-    Name = "HelloWorld"
+    Name = "Hello"
   }
 }
