@@ -1,8 +1,10 @@
 terraform {
   backend "s3" {
-    bucket = "mayank-terraform-statefile"
-    key    = "Statefile"
-    region = "ap-south-1"
+    bucket         = "mayank-terraform-statefile"
+    dynamodb_table = "terraform-state-lock-dynamo"
+    key            = "Statefile"
+    region         = "ap-south-1"
+    encrypt        = true
   }
 }
 resource "aws_s3_bucket" "sample_bucket" {
@@ -15,5 +17,16 @@ resource "aws_instance" "web" {
 
   tags = {
     Name = "Hello"
+  }
+}
+resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
+  name           = "terraform-state-lock-dynamo"
+  hash_key       = "LockID"
+  read_capacity  = 20
+  write_capacity = 20
+
+  attribute {
+    name = "LockID"
+    type = "S"
   }
 }
