@@ -1,0 +1,50 @@
+name: "terarform-infra-plan"
+
+on:
+  workflow_dispatch:
+    inputs:
+      destination_environment:
+        type: environment
+  workflow_call:
+    inputs:
+      destination_environment:
+        type: string
+permisions: 
+  contents: read
+
+jobs:
+  terraform:
+    name: "Terraform"
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.destination_environment }}
+
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Setup Terraform CLI
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform init
+        run: |
+          echo "** Running Terraform Init **"
+          terraform init
+
+      - name: Terraform Validate
+        run: |
+          echo "** Running Terraform Validate **"
+          terraform validate
+
+      - name: Terraform Plan
+        run: |
+          echo "** Running Terraform Plan **"
+          terraform plan
+
