@@ -9,10 +9,12 @@ on:
     inputs:
       destination_environment:
         type: string
+permisions: 
+  contents: read
 
 jobs:
-  terraform:
-    name: "Terraform"
+  terraform-plan:
+    name: "Terraform-Plan"
     runs-on: ubuntu-latest
     environment: ${{ inputs.destination_environment }}
 
@@ -45,4 +47,17 @@ jobs:
         run: |
           echo "** Running Terraform Plan **"
           terraform plan
+
+  terraform-apply:
+    name: "Terraform-Apply"
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.destination_environment }}
+    needs: terraform-plan
+
+    steps:
+      - name: Terraform Apply
+        run: |
+          echo "** Running Terraform Plan **"
+          terraform apply
+
 
