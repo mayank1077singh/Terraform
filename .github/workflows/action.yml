@@ -9,8 +9,7 @@ on:
     inputs:
       destination_environment:
         type: string
-permisions: 
-  contents: read
+
 
 jobs:
   terraform-plan:
