@@ -45,7 +45,7 @@ jobs:
       - name: Terraform Plan
         run: |
           echo "** Running Terraform Plan **"
-          terraform plan > myplan.txt
+          terraform plan > myplan
       - name: Publish artifact
         uses: actions/upload-artifact@v3
         with:
@@ -69,4 +69,4 @@ jobs:
         run: |
           echo "** Running Terraform Plan **"
           ls
-          terraform apply myplan.txt
+          terraform apply myplan
