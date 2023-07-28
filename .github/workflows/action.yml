@@ -46,6 +46,11 @@ jobs:
         run: |
           echo "** Running Terraform Plan **"
           terraform plan
+      - name: Publish artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: published-app
+          path: './'
 
   terraform-apply:
     name: "Terraform-Apply"
@@ -55,6 +60,11 @@ jobs:
 
     steps:
       # Download published artifact
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: published-app
+          path: './'
       - name: Terraform Apply
         run: |
           echo "** Running Terraform Plan **"
