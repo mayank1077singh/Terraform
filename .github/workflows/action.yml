@@ -68,4 +68,5 @@ jobs:
       - name: Terraform Apply
         run: |
           echo "** Running Terraform Plan **"
+          ls
           terraform apply myplan.txt
