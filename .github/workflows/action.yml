@@ -77,11 +77,7 @@ jobs:
 
       - name: Setup Terraform CLI
         uses: hashicorp/setup-terraform@v2
-      - name: Terraform init
-        run: |
-          echo "** Running Terraform Init **"
-          rm -rf .terraform/
-          terraform init          
+        
       - name: Terraform Apply
         run: |
           echo "** Running Terraform Plan **"
