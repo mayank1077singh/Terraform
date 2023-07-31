@@ -23,6 +23,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Configure AWS credentials
+        env : 
+          AWS_ACCESS_KEY_ID_NAME : ${{ env.AWS_ACCESS_KEY_ID_NAME }}
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets[env.AWS_ACCESS_KEY_ID_NAME] }}
