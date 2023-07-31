@@ -64,15 +64,18 @@ jobs:
 
     steps:
       # Download published artifact
-
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: published-app
       - name: Terraform init
         run: |
           echo "** Running Terraform Init **"
+          rm -rf .terraform/
           terraform init          
       - name: Terraform Apply
         run: |
           echo "** Running Terraform Plan **"
           cat main.tf
-          chmod 755 .terraform
           ls -al
           terraform apply 
