@@ -64,7 +64,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: published-app
-          
+      - name: Terraform init
+        run: |
+          echo "** Running Terraform Init **"
+          terraform init          
       - name: Terraform Apply
         run: |
           echo "** Running Terraform Plan **"
