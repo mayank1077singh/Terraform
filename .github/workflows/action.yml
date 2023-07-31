@@ -24,7 +24,7 @@ jobs:
 
       - name: Configure AWS credentials
         env : 
-          AWS_ACCESS_KEY_ID_NAME : 'aws_access_key_id'
+          AWS_ACCESS_KEY_ID_NAME : aws_access_key_id
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets[format('{0}_A', env.AWS_ACCESS_KEY_ID_NAME)] }}
