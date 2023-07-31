@@ -40,6 +40,6 @@ jobs:
         run: |
           echo "** Running Terraform Plan **"
           cat main.tf
-          chmod +x myplan
+
           ls -al
           terraform apply 
