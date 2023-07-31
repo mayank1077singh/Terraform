@@ -42,4 +42,4 @@ jobs:
           cat main.tf
 
           ls -al
-          terraform apply 
+          terraform apply --auto-approve
