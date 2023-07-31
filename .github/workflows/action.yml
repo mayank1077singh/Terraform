@@ -64,10 +64,7 @@ jobs:
 
     steps:
       # Download published artifact
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: published-app
+
       - name: Terraform init
         run: |
           echo "** Running Terraform Init **"
