@@ -45,12 +45,16 @@ jobs:
       - name: Terraform Plan
         run: |
           echo "** Running Terraform Plan **"
+          pwd
           terraform plan -out=myplan
+
+  
+
       - name: Publish artifact
         uses: actions/upload-artifact@v3
         with:
           name: published-app
-          path: ./
+          path: ./home/
 
   terraform-apply:
     name: "Terraform-Apply"
