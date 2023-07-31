@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: published-app
-          path: ./home/
+          path: ./
 
   terraform-apply:
     name: "Terraform-Apply"
@@ -75,5 +75,6 @@ jobs:
       - name: Terraform Apply
         run: |
           echo "** Running Terraform Plan **"
+          cat main.tf
           ls -al
           terraform apply 
