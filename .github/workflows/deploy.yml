@@ -37,9 +37,9 @@ jobs:
           rm -rf .terraform/
           terraform init          
       - name: Terraform Apply
+        env:
+          VALUE: '${{ secrets.VALUE }}'
         run: |
           echo "** Running Terraform Plan **"
-          cat main.tf
-
-          ls -al
+          export TF_VAR_value=VALUE
           terraform apply --auto-approve
