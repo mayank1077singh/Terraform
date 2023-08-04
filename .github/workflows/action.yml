@@ -50,7 +50,7 @@ jobs:
 
       - name: Terraform Plan
         env:
-          VALUE:'${{ secrets.VALUE }}'
+          VALUE: '${{ secrets.VALUE }}'
         run: |
           echo "** Running Terraform Plan **"
           export TF_VAR_value=VALUE
