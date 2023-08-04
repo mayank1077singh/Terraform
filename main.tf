@@ -1,8 +1,5 @@
-resource "aws_s3_bucket" "example" {
-  bucket = "my-tf-test-bucket-mayank"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+resource "aws_ssm_parameter" "foo" {
+  name  = "foo"
+  type  = "String"
+  value = var.value
 }
